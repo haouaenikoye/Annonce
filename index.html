@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>MaisoN de Location</title>
+</head>
+<body>
+
+<header class="header">
+  <h1 class="visuallyhidden">Ne PAssez Pas à Coté</h1>
+</header>
+
+<main>
+  <section class="map map--faded">
+    <div class="map__pins">
+      <div class="map__pinsoverlay"><h2>Niamey-Haya</h2></div>
+
+      <button class="map__pin map__pin--main">
+        <img src="img/sous-location.svg" width="40" height="44" draggable="false">
+        <svg viewBox="0 0 70 70">
+          <defs>
+            <path d="M35,35m-23,0a23,23 0 1,1 46,0a23,23 0 1,1 -46,0" id="tophalf" />
+          </defs>
+
+          <ellipse cx="35" cy="35" rx="35" ry="35" fill="rgba(255, 86, 53, 0.7)" />
+          <text><textPath xlink:href="#tophalf" startOffset="0">Tout ce que vous désirez</textPath></text>
+        </svg>
+      </button>
+    </div>
+
+    <div class="map__filters-container">
+      <form action="#" class="map__filters" autocomplete="off">
+        <select name="housing-type" id="housing-type" class="map__filter">
+          <option value="any" selected>Tout Type de logement</option>
+          <option value="flat">Appartement</option>
+          <option value="house">Maison/Immeuble</option>
+          <option value="bungalo">Grange</option>
+        </select>
+
+        <select name="housing-price" id="housing-price" class="map__filter">
+          <option value="any" selected>Tout</option>
+          <option value="middle">10 000 - 50 000&#x20bd;</option>
+          <option value="low">jusqu'à 10000&#x20bd;</option>
+          <option value="high">à partir de 50.000&#x20bd;</option>
+        </select>
+
+        <select name="housing-rooms" id="housing-rooms" class="map__filter">
+          <option value="any" selected>N'importe quel nombre de chambres</option>
+          <option value="1">Une pièce</option>
+          <option value="2">Deux pièces</option>
+          <option value="3">Trois salles</option>
+        </select>
+
+        <select name="housing-guests" id="housing-guests" class="map__filter">
+          <option value="any" selected>N'importe quel nombre d'invités</option>
+          <option value="1">Un invité</option>
+          <option value="2">Deux invités</option>
+        </select>
+
+        <fieldset id="housing-features" class="map__filter-set features">
+          <input type="checkbox" name="features" value="wifi" id="filter-wifi">
+          <label class="feature feature--wifi" for="filter-wifi">Wi-Fi</label>
+
+          <input type="checkbox" name="features" value="dishwasher" id="filter-dishwasher">
+          <label class="feature feature--dishwasher" for="filter-dishwasher">Lave-vaisselle</label>
+
+          <input type="checkbox" name="features" value="parking" id="filter-parking">
+          <label class="feature feature--parking" for="filter-parking">Parking</label>
+
+          <input type="checkbox" name="features" value="washer" id="filter-washer">
+          <label class="feature feature--washer" for="filter-washer">Machine à laver/label>
+
+          <input type="checkbox" name="features" value="elevator" id="filter-elevator">
+          <label class="feature feature--elevator" for="filter-elevator">Toit</label>
+
+          <input type="checkbox" name="features" value="conditioner" id="filter-conditioner">
+          <label class="feature feature--conditioner" for="filter-conditioner">Climatisation</label>
+         </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <div class="notice">
+    <h2 class="notice__title">Ton annonce</h2>
+
+    <form class="notice__form notice__form--disabled" method="post" enctype="multipart/form-data" autocomplete="off">
+      <fieldset class="notice__header">
+        <legend>Votre photo (pour la carte)</legend>
+        <div class="notice__photo">
+          <div class="upload">
+            <div class="notice__preview">
+              <img src="img/sous-location.svg" alt="Avatar"  width="40" height="44">
+            </div>
+            <input type="file" id="avatar">
+            <label class="drop-zone" for="avatar">Téléchargez ou&nbsp;faites glisser une photo ici/label>
+            <p class="notice__info">Remplissez tous les champs obligatoires, définissez un prix, téléchargez des photos. Trouvez une description intéressante. Cela rendra votre annonce plus vivante et plus attrayante. L'annonce qui en résulte doit donner aux clients une image complète de votre hébergement.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form__element form__element--wide">
+        <label for="title">Nom et Prénom</label>
+        <input id="title" name="title" type="text" placeholder="Bel appartement confortable dans le centre de Niamey">
+      </fieldset>
+
+      <fieldset class="form__element form__element--wide">
+        <label for="address">L'adresse</label>
+        <input id="address" name="address" type="text">
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="type">Type de logement</label>
+        <select id="type" name="type">
+          <option value="flat" selected>Appartement</option>
+          <option value="bungalo">Cabane</option>
+          <option value="house">Maison</option>
+          <option value="palace">Palais</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="price">Prix ​​par nuit.</label>
+        <input id="price" name="price" type="number" placeholder="5000">
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="timein">Heure d'arrivée et de départHeure d'arrivée et de départ</label>
+        <select id="timein" name="timein">
+          <option value="12:00" selected>Après 12</option>
+          <option value="13:00">Après 13</option>
+          <option value="14:00">Après 14</option>
+        </select>
+        <select id="timeout" name="timeout" title="Time to go out">
+          <option value="12:00" selected>Check-out avant 12</option>
+          <option value="13:00">Départ jusqu'à 13</option>
+          <option value="14:00">Départ jusqu'à 14</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="room_number">Nombre de chambres</label>
+        <select id="room_number" name="rooms">
+          <option value="1" selected>1 chambre</option>
+          <option value="2">2 pièces</option>
+          <option value="3">3 pièces</option>
+          <option value="100">100 chambres</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="form__element">
+        <label for="capacity">nombre de places</label>
+        <select id="capacity" name="capacity">
+          <option value="3" selected>pour 3 personnes</option>
+          <option value="2">pour 2 personnes/option>
+          <option value="1">pour 1 personne</option>
+          <option value="0">pas pour les invités</option>
+        </select>
+      </fieldset>
+
+      <fieldset class="form__element features form__element--wide">
+        <legend>Equipements: Wi-Fi, cuisine, parking, lave-linge, Toit, climatisation</legend>
+
+        <input type="checkbox" name="features" value="wifi" id="feature-wifi">
+        <label class="feature feature--wifi" for="feature-wifi">Wi-Fi</label>
+
+        <input type="checkbox" name="features" value="dishwasher" id="feature-dishwasher">
+        <label class="feature feature--dishwasher" for="feature-dishwasher">Lave-vaisselle</label>
+
+        <input type="checkbox" name="features" value="parking" id="feature-parking">
+        <label class="feature feature--parking" for="feature-parking">Parking</label>
+
+        <input type="checkbox" name="features" value="washer" id="feature-washer">
+        <label class="feature feature--washer" for="feature-washer">Machine à laver/label>
+
+        <input type="checkbox" name="features" value="elevator" id="feature-washer">
+        <label class="feature feature--elevator" for="feature-washer">Toit</label>
+
+        <input type="checkbox" name="features" value="conditioner" id="feature-conditioner">
+        <label class="feature feature--conditioner" for="feature-conditioner">Climatisation</label>
+      </fieldset>
+
+      <fieldset class="form__element form__element--wide">
+        <label for="description">description (facultatif)</label>
+        <textarea id="description" name="description" placeholder="Dites-nous ici ce qui est génial dans votre logement et en général"></textarea>
+      </fieldset>
+
+      <fieldset class="form__element form__element--wide">
+        <label>Photos du logement</label>
+        <div class="form__photo-container">
+          <div class="upload">
+            <input type="file" id="images">
+            <label for="images" class="drop-zone">Téléchargez ou&nbsp;faites glisser une photo ici</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form__element form__element--submit">
+        <button class="form__submit" type="submit">Publier</button>
+        ou <button class="form__reset" type="reset">Supprimer</button>
+      </fieldset>
+    </form>
+  </div>
+</main>
+
+<footer class="footer container">
+  <div class="center-wrapper">
+    <section class="footer-logo">
+      Copyright  <a tabindex="1" href="" class="footer-logo-link"><img src="img/logo.png" class="footer-logo-image" width="130" alt="HTML Academy"/></a> &copy; (c) 2021
+    </section>
+    <nav class="footer-social">
+      <a href="" class="footer-social-item footer-social-item-twitter" target="_blank" rel="nofollow">Twitter</a>
+      <a href="" class="footer-social-item footer-social-item-instagram" target="_blank" rel="nofollow">Instagtam</a>
+      <a href="" class="footer-social-item footer-social-item-facebook" target="_blank" rel="nofollow">Facebook</a>
+      <a href="" class="footer-social-item footer-social-item-vk" target="_blank" rel="nofollow">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<template>
+  <article class="map__card popup">
+    <img src="img/avatars/user01.png" class="popup__avatar" width="70" height="70">
+    <button class="popup__close">Fermer</button>
+    <h3>Passez des agréables nuits</h3>
+    <p><small>Niamey-Niger</small></p>
+    <p class="popup__price">5200&#x20bd;/Nuit</p>
+    <h4>Appartement</h4>
+    <p>2 chambres pour 3 personnes</p>
+    <p>Arrivée après 14h00, départ avant 10h00 </p>
+    <ul class="popup__features">
+      <li class="fonctionnalité caractéristique - wifi"></li>
+      <li class="caractéristique caractéristique - lave-vaisselle"></li>
+      <li class="caractéristique caractéristique - parking"></li>
+      <li class="fcaractéristique caractéristique - laveuse"></li>
+      <li class="caractéristique caractéristique - Toit"></li>
+      <li class="caractéristique caractéristique - conditionneur"></li>
+    </ul>
+    <p>Magnifique studio au centre de Niamey. Convient aussi bien aux touristes qu'aux hommes d'affaires. L'appartement est entièrement équipé et récemment rénové
+      <li><img src=""></li>
+    </ul>
+  </article>
+
+  <button style="left: 200px; top: 400px;" class="map__pin"><img src="img/logo.png" width="40" height="40" draggable="false"></button>
+</template>
+
+</body>
+</html>
